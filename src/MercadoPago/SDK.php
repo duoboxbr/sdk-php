@@ -128,25 +128,25 @@ class SDK
     
     
     // Publishing generic functions 
-    
-    public static function get($uri, $options=[])
+
+    public static function get($uri, $options=[], $assinatura = null)
     {
-      return self::$_restClient->get($uri, $options);
+        return self::$_restClient->get($uri, $options, $assinatura);
     }
-    
-    public static function post($uri, $options=[])
+
+    public static function post($uri, $options=[], $assinatura = null)
     {
-      return self::$_restClient->post($uri, $options);
+        return self::$_restClient->post($uri, $options, $assinatura);
     }
-    
-    public static function put($uri, $options=[])
+
+    public static function put($uri, $options=[], $assinatura = null)
     {
-      return self::$_restClient->put($uri, $options);
+        return self::$_restClient->put($uri, $options, $assinatura);
     }
-    
-    public static function delete($uri, $options=[])
+
+    public static function delete($uri, $options=[], $assinatura = null)
     {
-      return self::$_restClient->delete($uri, $options);
+        return self::$_restClient->delete($uri, $options, $assinatura);
     }
 
     /**

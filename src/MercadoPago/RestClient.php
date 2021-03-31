@@ -28,6 +28,7 @@ class RestClient
      */
     protected static $defaultParams = [];
     protected $customParams = [];
+    protected $assinatura = null;
 
     /**
      * RestClient constructor.
@@ -132,7 +133,10 @@ class RestClient
         $url_query = $this->getArrayValue($options, 'url_query');
         $formData = $this->getArrayValue($options, 'form_data');
         $jsonData = $this->getArrayValue($options, 'json_data');
-        
+
+        //Caso seja assinatura vai setar o data com os dados da requisição da assinatura
+        if ($this->assinatura)
+            $jsonData = $options;
 
         $defaultHttpParams = self::$defaultParams;
         $connectionParams = array_merge($defaultHttpParams, $this->customParams);
@@ -213,48 +217,56 @@ class RestClient
     /**
      * @param       $uri
      * @param array $options
+     * @param null $assinatura
      *
      * @return array
      * @throws Exception
      */
-    public function get($uri, $options = [])
+    public function get($uri, $options = [], $assinatura = null)
     {
+        $this->assinatura = $assinatura;
         return $this->exec(array_merge(['get' => $uri], $options));
     }
 
     /**
      * @param       $uri
      * @param array $options
+     * @param null $assinatura
      *
      * @return array
      * @throws Exception
      */
-    public function post($uri, $options = [])
-    {  
+    public function post($uri, $options = [], $assinatura = null)
+    {
+        $this->assinatura = $assinatura;
         return $this->exec(array_merge(['post' => $uri], $options));
     }
 
     /**
      * @param       $uri
      * @param array $options
+     * @param null  $assinatura
      *
      * @return array
      * @throws Exception
      */
-    public function put($uri, $options = [])
+    public function put($uri, $options = [], $assinatura = null)
     {
+        $this->assinatura = $assinatura;
         return $this->exec(array_merge(['put' => $uri], $options));
     }
 
     /**
      * @param       $uri
      * @param array $options
+     * @param null $assinatura
      *
      * @return array
      * @throws Exception
      */
-    public function delete($uri, $options = [])
+    public function delete($uri, $options = [], $assinatura = null)
     {
+        $this->assinatura = $assinatura;
         return $this->exec(array_merge(['delete' => $uri], $options));
     }
 
