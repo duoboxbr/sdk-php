@@ -83,7 +83,7 @@ class RestClient
             } else {
                 $data = json_encode($data);
             }
-
+            var_dump($data);
             if (function_exists('json_last_error')) {
                 $json_error = json_last_error();
                 if ($json_error != JSON_ERROR_NONE) {
@@ -187,8 +187,7 @@ class RestClient
         }
         if ($this->assinatura) {
             unset($options["post"]);
-            $this->setData($connect, json_encode($options), "application/json");
-            var_dump($options);
+            $this->setData($connect, $options, "application/json");
         }
 
         $apiResult = $connect->execute();
