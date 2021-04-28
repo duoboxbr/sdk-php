@@ -135,8 +135,11 @@ class RestClient
         $jsonData = $this->getArrayValue($options, 'json_data');
 
         //Caso seja assinatura vai setar o data com os dados da requisição da assinatura
-        if (!is_null($this->assinatura))
+        if (!is_null($this->assinatura)){
             $jsonData = $options;
+            var_dump($jsonData);
+        }
+        var_dump($jsonData);
 
         $defaultHttpParams = self::$defaultParams;
         $connectionParams = array_merge($defaultHttpParams, $this->customParams);
