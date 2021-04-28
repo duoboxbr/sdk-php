@@ -134,8 +134,9 @@ class RestClient
         $formData = $this->getArrayValue($options, 'form_data');
         $jsonData = $this->getArrayValue($options, 'json_data');
 
+        var_dump($jsonData);
         //Caso seja assinatura vai setar o data com os dados da requisição da assinatura
-        if (!is_null($this->assinatura)){
+        if (!empty($this->assinatura)){
             $jsonData = $options;
             var_dump($jsonData);
         }
