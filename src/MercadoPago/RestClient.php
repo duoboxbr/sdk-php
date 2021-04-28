@@ -186,7 +186,8 @@ class RestClient
             $this->setData($connect, $formData);
         }
         if ($this->assinatura) {
-            $this->setData($connect, $options, "application/json");
+            var_dump($options);
+            $this->setData($connect, $options);
         }
  
         $apiResult = $connect->execute();
