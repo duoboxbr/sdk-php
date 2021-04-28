@@ -187,7 +187,7 @@ class RestClient
         }
         if ($this->assinatura) {
             unset($options["post"]);
-            $this->setData($connect, $options, "application/json");
+            $this->setData($connect, json_encode($options), "application/json");
             var_dump($options);
         }
 
