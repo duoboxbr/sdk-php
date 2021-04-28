@@ -136,10 +136,10 @@ class RestClient
 
         var_dump($jsonData);
         //Caso seja assinatura vai setar o data com os dados da requisição da assinatura
-        if (!empty($this->assinatura)){
+        if (!is_null($this->assinatura)){
             $jsonData = $options;
-            var_dump($jsonData);
         }
+        var_dump("assinatura: ".$this->assinatura);
         var_dump($jsonData);
 
         $defaultHttpParams = self::$defaultParams;
