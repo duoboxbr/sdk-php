@@ -134,11 +134,6 @@ class RestClient
         $formData = $this->getArrayValue($options, 'form_data');
         $jsonData = $this->getArrayValue($options, 'json_data');
 
-        //Caso seja assinatura vai setar o data com os dados da requisição da assinatura
-        if ($this->assinatura){
-            $jsonData = $options;
-        }
-
         $defaultHttpParams = self::$defaultParams;
         $connectionParams = array_merge($defaultHttpParams, $this->customParams);
         $query = '';
@@ -191,10 +186,8 @@ class RestClient
             $this->setData($connect, $formData);
         }
         if ($this->assinatura) {
-            $this->setData($connect, $jsonData, "application/json");
-            var_dump($jsonData);
+            $this->setData($connect, $options, "application/json");
         }
-        var_dump($connect);
  
         $apiResult = $connect->execute();
         $apiHttpCode = $connect->getInfo(CURLINFO_HTTP_CODE);
