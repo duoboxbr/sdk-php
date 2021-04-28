@@ -192,8 +192,9 @@ class RestClient
         }
         if ($this->assinatura) {
             $this->setData($connect, $jsonData, "application/json");
-            var_dump($connect." - ".$jsonData);
+            var_dump($jsonData);
         }
+        var_dump($connect);
  
         $apiResult = $connect->execute();
         $apiHttpCode = $connect->getInfo(CURLINFO_HTTP_CODE);
